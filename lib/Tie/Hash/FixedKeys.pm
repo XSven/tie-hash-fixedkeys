@@ -67,7 +67,7 @@ use warnings;
 use Tie::Hash;
 use Carp;
 
-use Attribute::Handlers autotie => { "__CALLER__::FixedKeys" => __PACKAGE__ };
+use Attribute::Handlers autotie => { '__CALLER__::FixedKeys' => __PACKAGE__ };
 
 our @ISA = qw(Tie::StdHash);
 
@@ -85,7 +85,7 @@ sub TIEHASH {
   my $class = shift;
 
   my %hash;
-  @hash{@_} = (undef) x @_;
+  @hash{@_} = ();
 
   bless \%hash, $class;
 }
@@ -132,10 +132,11 @@ Clears all values but resetting them to C<undef>.
 =cut
 
 sub CLEAR {
-  my $self = shift;
+  my ($self) = @_;
 
-  $self->{$_} = undef foreach keys %$self;
+  @{$self}{keys %$self} = ();
 }
+
 
 1;
 __END__
