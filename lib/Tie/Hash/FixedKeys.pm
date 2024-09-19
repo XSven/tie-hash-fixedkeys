@@ -101,7 +101,7 @@ sub STORE {
   my ($self, $key, $val) = @_;
 
   unless (exists $self->{$key}) {
-    croak "invalid key [$key] in hash\n";
+    croak "invalid key [$key] in hash";
   }
   $self->{$key} = $val;
 }
