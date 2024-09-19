@@ -1,6 +1,5 @@
 Changes
 lib/Tie/Hash/FixedKeys.pm
-Makefile.PL
 Build.PL
 MANIFEST
 t/test.t
@@ -8,5 +7,3 @@ t/pod.t
 t/pod-coverage.t
 COPYING
 README
-META.yml                                 Module meta-data (added by MakeMaker)
-META.json
