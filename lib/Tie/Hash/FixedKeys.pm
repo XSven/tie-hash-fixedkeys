@@ -1,5 +1,3 @@
-# $Id$
-
 =head1 NAME
 
 Tie::Hash::FixedKeys - Perl extension for hashes with fixed keys
@@ -10,11 +8,11 @@ Tie::Hash::FixedKeys - Perl extension for hashes with fixed keys
 
   my @keys = qw(forename surname date_of_birth gender);
   my %person;
-  tie %person, 'Tie;::Hash::FixedKeys', @keys;
+  tie %person, 'Tie::Hash::FixedKeys', @keys;
 
   @person{@keys} = qw(Fred Bloggs 19700101 M);
 
-  $person{height} = "6'"; # generates a warning
+  $person{height} = "6'"; # generates an exception
 
 or (new! improved!)
 
@@ -33,9 +31,9 @@ the code:
   my %person;
   tie %person, 'Tie;::Hash::FixedKeys', @keys;
 
-the hash C<%person> can only contain the keys forename, surname, 
+the hash C<%person> can only contain the keys forename, surname,
 date_of_birth and gender. Any attempt to set a value for another key
-will generate a run-time warning.
+will generate a run-time exception.
 
 =head2 ATTRIBUTE INTERFACE
 
@@ -53,14 +51,14 @@ value is reset to C<undef>.
 
 Versions of Perl from 5.8.0 include a module called L<Hash::Util> which
 contains a function called C<lock_keys> which does the same as this module
-but in a faster and more powerful way. I recommend that you use that 
+but in a faster and more powerful way. I recommend that you use that
 method in place of this module.
 
 This module is left on CPAN as an example of tied hashes.
 
 =cut
 
-package Tie::Hash::FixedKeys; 
+package Tie::Hash::FixedKeys;
 
 use 5.006;
 use strict;
